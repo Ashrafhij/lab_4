@@ -1,34 +1,37 @@
-# משחק נחיתת חללית
+# Super Linter GitHub Actions
 
-ברוכים הבאים למשחק נחיתת חללית, שבו המטרה היא להנחית בבטחה חללית על פני כוכב-לכת, תוך ניווט בין מכשולים ומניעת התנגשויות עם סלעים ואתגרים. במשחק זה, השחקנים אינם שולטים ישירות על מיקום החללית, אלא מניעים אותה באמצעות הוספת כוחות שונים.
+GitHub Actions workflow for linting the code base using the Super Linter.
 
-## פקודות המשחק:
+## Overview
 
-- **חץ למעלה:** מוסיף לחללית כוח לכיוון החטום שלה.
-- **חץ למטה:** מוסיף לחללית כוח לכיוון הזנב שלה.
-- **חץ ימינה:** מוסיף לחללית כוח סיבובי (Torque) לימין.
-- **חץ שמאלה:** מוסיף לחללית כוח סיבובי שמאלה.
+This GitHub Actions workflow is designed to lint the code base using the [Super Linter](https://github.com/github/super-linter). The Super Linter checks for various code quality issues in different types of files within the specified source path.
 
-## רמות ואתגרים:
+## Workflow Details
 
-### רמה 1
-הקרקע חלקה, ויש צורך רק להנחית במהירות מספיק נמוכה.
+- **Trigger:** The workflow is triggered on pushes and pull requests to the `master` or `main` branches.
+- **Job:** The workflow runs on an `ubuntu-latest` virtual machine.
+- **Linting:** The Super Linter is used to validate the code base.
+  - Source path: `Assets/Scripts/**/*.cs`
 
-### רמה 2
-מכשולים נוספים על הקרקע, כמו סלעים, הרים וגבעות, מהווים אתגר לתהליך הנחיתה.
+## Usage
 
-### רמה 3
-מכשולים באוויר, כמו אסטרואידים מתעופפים, מהווים איום לחללית. יש לנווט בזהירות כדי למנוע התנגשויות.
+1. Ensure the Super Linter GitHub Action workflow file (`.github/workflows/lint.yml`) is present in your repository.
+2. Push or create a pull request to the `master` or `main` branch to trigger the workflow.
+3. The workflow will check for linting issues in the specified source path.
 
-## איך לשחק:
+## Configuration
 
-1. הפעילו את המשחק.
-2. בחרו רמה להתחיל.
-3. השתמשו בחצים להפעלת הכוחות המתאימים ונווטו בחללית.
-4. הנחיתו את החללית בבטחה בלעדייך להתנגשויות עם סלעים או מכשולים.
+The workflow can be customized by modifying the Super Linter configuration in the workflow file.
 
-## טיפים:
+### Super Linter Configuration:
 
-- שלטו בכמות הדחפים בזהירות כדי לנהל את מהירות הירידה.
-- השתמשו בכוחות סיבוב באופן אסטרטגי כדי ליצור יישור נכון לנחיתה חלקה.
-- השקיפו סביבכם והתאימו את האסטרטגיה שלכם בהתאם לרמות הגבוהות.
+- **Validate All Codebase:** `false`
+- **Default Branch:** `main`
+- **GitHub Token:** Used for authentication (`${{ secrets.GITHUB_TOKEN }}`)
+- **Source Path:** `Assets/Scripts/**/*.cs`
+
+For more details on Super Linter configuration, refer to the [official documentation](https://github.com/github/super-linter).
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
